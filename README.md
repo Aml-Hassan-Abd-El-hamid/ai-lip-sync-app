@@ -1,6 +1,6 @@
 # AI Lip Sync
 
-The project is essentially a part of an interview process with the company named [DigiSay](https://digisay.breezy.hr/), I recived a mail with the following task:
+The project is essentially a part of an interview process with the company named [DigiSay](https://digisay.breezy.hr/), I received a mail with the following task:
 
 Assignment Object:<br>
           &emsp;&emsp;&emsp;&emsp;Your task is to develop a lip-syncing model using machine learning
@@ -33,3 +33,5 @@ Candidates will be evaluated based on the following criteria:<br>
         &emsp;&emsp;&emsp;&emsp;apply them to a practical problem.<br>
         
 I was given about 96 hours to accomplish this task, I spent the first 12 hours sick with a very bad flu and no proper internet connection so now I have 84 hours, let's go!
+
+Given the provided hint from the company, "You can refer to state of the art models in lip-syncing.", I started looking into the available open-source pre-trained model that can accomplish this task and most available resources pointed towards **Wav2Lip**. I found a couple of interesting tutorials for that model that I will add to this project latter. 
