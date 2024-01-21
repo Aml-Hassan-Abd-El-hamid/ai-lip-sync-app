@@ -58,7 +58,7 @@ In order to work with and deploy the wav2lip model I had to make the following c
 **How to run the application locally:**<br>
 
 1- clone the repo to your local machine.<br>
-2- install [conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) if you don't have it already, and create a new virtual environment for the project, you can use another way to create your own environment but don't use [Poetry](https://python-poetry.org/) cause some of the modules needed to run the Wav2Lip is old and not compatible with poetry and you'll end up unable to install the requirement modules for this project.
+2- install [conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) if you don't have it already, and create a new virtual environment for the project, you can use another way to create your own environment but don't use [Poetry](https://python-poetry.org/) cause some of the modules needed to run the Wav2Lip is old and not compatible with poetry and you'll end up unable to install the requirement modules for this project.<br>
 3- open your terminal inside the project folder and run the following command: `pip install -r requirements.txt` to install the needed modules.<br>
 4- open your terminal inside the project folder and run the following command: `streamlit run app.py` to run the streamlit application.<br>
 
