@@ -49,8 +49,10 @@ Given the size of those kind of files, I had to use git lfs, here's how to do it
 In order to work with and deply the wav2lip model I had to do the following changes:<br>
 1- Changed the `_build_mel_basis()` function in `audio.py`, I had to do that in order to be able to work with `librosa>=0.10.0` pakadge, check this [issue](https://github.com/Rudrabha/Wav2Lip/issues/550) for more details.<br>
 2- Changed the `main()` function at the `inferance.py` to make it take an output from the `app.py` directly insted of using the command line arguments.<br>
-3- Since I'm using streamlit for deployment and streamlit Cloud doesn't support GPU, I had to change the device to work with `cpu` insted of `cuda`.<br>
-4- I did other minor changes like changing path to file or modify import statements.
+3- I took the `load_model(path)` function and added it to `app.py` and added `@st.cache_data` in order to only load the model once, insted of using it multiple times.<br>
+4- Deleted the uncessary files like the unused checkpoints.<br>
+5- Since I'm using streamlit for deployment and streamlit Cloud doesn't support GPU, I had to change the device to work with `cpu` insted of `cuda`.<br>
+6- I did other minor changes like changing path to file or modify import statements.
 
 **I broke down my work plan for that project into the following pieces:**<br>
 - [x] 1- From a video & audio to a lip-synced video: a function that takes a video of the avatar talking + the audio and produces a lip-synced video using **Wav2Lip**<br>
