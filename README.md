@@ -39,6 +39,7 @@ Given the provided hint from the company, "You can refer to state of the art mod
 **Pushing the checkpoints files:**<br>
 
 Given the size of those kind of files, I had to use git lfs, here's how to do it:<br>
+
 1- Follow the installation instructions that are suitable for your system from [here](https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage) <br>
 2- Use the command `git lfs track "*.pth"` to let git lfs know that those are your big files.<br>
 3- When pushing from the command line -I usually use VS code but it usually doesn't work with big files like `.pth` files- you need to generate a personal access token, to do so, follow the instructions from [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token), and then copy the token<br>
@@ -54,9 +55,8 @@ In order to work with and deply the wav2lip model I had to do the following chan
 5- Since I'm using streamlit for deployment and streamlit Cloud doesn't support GPU, I had to change the device to work with `cpu` insted of `cuda`.<br>
 6- I did other minor changes like changing path to file or modify import statements.
 
-**I broke down my work plan for that project into the following pieces:**<br>
-- [x] 1- From a video & audio to a lip-synced video: a function that takes a video of the avatar talking + the audio and produces a lip-synced video using **Wav2Lip**<br>
-- [ ] * Bounce: deploy the function from step 1 using Streamlit<br>
-- [ ] 2- From an avatar image to a video: a function that takes an avatar image and animates and produces the video that should be passed to the function from step 1<br>
-- [ ] * Bounce: add the function from step 2 to the deployed Streamlit website and take the audio from the user as with a record function.<br>
-- [ ] * Bounce: let the model create its own avatar using a prompt.<br>
+**How to run the application locally:**<br>
+
+1- clone the repo to your local machine.<br>
+2- open your terminal inside the project folder and run the following command: `pip install -r requirements.txt` to install the needed modules.<br>
+3- open your terminal inside the project folder and run the following command: `streamlit run app.py` to run the streamlit application.<br>
