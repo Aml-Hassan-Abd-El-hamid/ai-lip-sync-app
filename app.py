@@ -27,7 +27,7 @@ model = load_model('wav2lip/checkpoints/wav2lip_gan.pth')
 image_video_map = {
       				"avatars_images/avatar1.jpg":"avatars_videos/avatar1.mp4",
                     "avatars_images/avatar2.jpg":"avatars_videos/avatar2.mp4",
-                    "avatars_images/avatar2.jpg":"avatars_videos/avatar2.mp4"
+                    "avatars_images/avatar3.png":"avatars_videos/avatar3.mp4"
                               }
 def streamlit_look():
     """
@@ -39,7 +39,7 @@ def streamlit_look():
     avatar_img = image_select("", 
 							  ["avatars_images/avatar1.jpg",
           						"avatars_images/avatar2.jpg",
-                                "avatars_images/avatar3.jpg",
+                                "avatars_images/avatar3.png",
                                         ])
     data["imge_path"] = avatar_img
     audio=mic_recorder(
