@@ -5,7 +5,7 @@ librosa==0.10.1
 lws==1.2.8
 opencv_contrib_python==4.9.0.80
 opencv_python==4.9.0.80
-streamlit==1.29.0
+streamlit >= 1.9.2 
 streamlit_image_select==0.6.0
 streamlit_mic_recorder==0.0.4
 torch==2.1.2
