@@ -35,7 +35,8 @@ def streamlit_look():
     """
     data={}
     st.title("Welcome to AI Lip Sync :)")
-    avatar_img = image_select("Choose your Avatar", 
+    st.write("Please choose your avatar from the following options:")
+    avatar_img = image_select("", 
 							  ["avatars_images/avatar1.jpg",
           						"avatars_images/avatar2.jpg",
                                 "avatars_images/avatar3.jpg",
