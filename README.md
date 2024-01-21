@@ -1,6 +1,6 @@
 # AI Lip Sync
 
-The project is essentially a part of an interview process with the company named [DigiSay](https://digisay.breezy.hr/), I received a mail with the following task:
+The project is essentially a part of an interview process with the company named [DigiSay](https://digisay.breezy.hr/), I received an email with the following task:
 
 Assignment Object:<br>
           &emsp;&emsp;&emsp;&emsp;Your task is to develop a lip-syncing model using machine learning
@@ -47,22 +47,24 @@ Given the size of those kind of files, I had to use git lfs, here's how to do it
 
 **Things I changed in the wav2lip and why:**<br>
 
-In order to work with and deply the wav2lip model I had to do the following changes:<br>
-1- Changed the `_build_mel_basis()` function in `audio.py`, I had to do that in order to be able to work with `librosa>=0.10.0` pakadge, check this [issue](https://github.com/Rudrabha/Wav2Lip/issues/550) for more details.<br>
-2- Changed the `main()` function at the `inferance.py` to make it take an output from the `app.py` directly insted of using the command line arguments.<br>
-3- I took the `load_model(path)` function and added it to `app.py` and added `@st.cache_data` in order to only load the model once, insted of using it multiple times.<br>
+In order to work with and deploy the wav2lip model I had to make the following changes:<br>
+1- Changed the `_build_mel_basis()` function in `audio.py`, I had to do that in order to be able to work with `librosa>=0.10.0` package, check this [issue](https://github.com/Rudrabha/Wav2Lip/issues/550) for more details.<br>
+2- Changed the `main()` function at the `inferance.py` to make it take an output from the `app.py` directly instead of using the command line arguments.<br>
+3- I took the `load_model(path)` function and added it to `app.py` and added `@st.cache_data` in order to only load the model once, instead of using it multiple times.<br>
 4- Deleted the unnecessary files like the unused checkpoints.<br>
-5- Since I'm using streamlit for deployment and streamlit Cloud doesn't support GPU, I had to change the device to work with `cpu` insted of `cuda`.<br>
+5- Since I'm using Streamlit for deployment and Streamlit Cloud doesn't support GPU, I had to change the device to work with `cpu` instead of `cuda`.<br>
 6- I made other minor changes like changing the path to a file or modifying import statements.
 
 **How to run the application locally:**<br>
 
 1- clone the repo to your local machine.<br>
-2- open your terminal inside the project folder and run the following command: `pip install -r requirements.txt` to install the needed modules.<br>
-3- open your terminal inside the project folder and run the following command: `streamlit run app.py` to run the streamlit application.<br>
+2- install [conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) if you don't have it already, and create a new virtual environment for the project, you can use another way to create your own environment but don't use [Poetry](https://python-poetry.org/) cause some of the modules needed to run the Wav2Lip is old and not compatible with poetry and you'll end up unable to install the requirement modules for this project.
+3- open your terminal inside the project folder and run the following command: `pip install -r requirements.txt` to install the needed modules.<br>
+4- open your terminal inside the project folder and run the following command: `streamlit run app.py` to run the streamlit application.<br>
 
 **Video preview of the application:**<br>
 
+**fast animation version**
 
 
 https://github.com/Aml-Hassan-Abd-El-hamid/AI-Lip-Sync/assets/66205928/36577ccb-5ec6-4bb4-b7ff-44bb52a4f984
