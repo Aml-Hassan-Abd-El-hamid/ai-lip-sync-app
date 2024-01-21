@@ -4,3 +4,6 @@
 /wav2lip/face_detection/detection/__pycache__
 /wav2lip/face_detection/detection/sfd/__pycache__
 /__pycache__
+sound.wav
+wav2lip/results/result_voice.mp4
+wav2lip/temp/result.avi
