@@ -1,0 +1,6 @@
+/wav2lip/__pycache__
+/wav2lip/models/__pycache__
+/wav2lip/face_detection/__pycache__
+/wav2lip/face_detection/detection/__pycache__
+/wav2lip/face_detection/detection/sfd/__pycache__
+/__pycache__
