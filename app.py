@@ -1,7 +1,6 @@
 import os
 import streamlit as st
 from streamlit_image_select import image_select
-from st_audiorec import st_audiorec
 import torch
 from streamlit_mic_recorder import mic_recorder
 from wav2lip import inference 
@@ -27,6 +26,8 @@ model = load_model('wav2lip/checkpoints/wav2lip_gan.pth')
 
 image_video_map = {
       				"avatars_images/avatar1.jpg":"avatars_videos/avatar1.mp4",
+                    "avatars_images/avatar2.jpg":"avatars_videos/avatar2.mp4",
+                    "avatars_images/avatar2.jpg":"avatars_videos/avatar2.mp4"
                               }
 def streamlit_look():
     """
@@ -35,15 +36,11 @@ def streamlit_look():
     data={}
     st.title("Welcome to AI Lip Sync :)")
     avatar_img = image_select("Choose your Avatar", 
-							  ["avatars_images/avatar1.jpg"])
+							  ["avatars_images/avatar1.jpg",
+          						"avatars_images/avatar2.jpg",
+                                "avatars_images/avatar3.jpg",
+                                        ])
     data["imge_path"] = avatar_img
-    #wav_audio_data = st_audiorec()
-    #st.write(wav_audio_data)
-    #col_playback, col_space = st.columns([0.58,0.42])
-    #with col_playback:
-    #        st.audio(wav_audio_data, format='audio/wav')
-    #if wav_audio_data is not None:
-    #      st.audio(wav_audio_data, format='audio/wav')
     audio=mic_recorder(
     start_prompt="Start recording",
     stop_prompt="Stop recording", 
@@ -60,7 +57,9 @@ def streamlit_look():
 
 def main():  
     data=streamlit_look()
+    st.write("Don't forget to save the record or there will be an error!")
     save_record = st.button("save record")
+    st.write("With fast animation only the lips of the avatar will move, and it will take probably less than a minute for a record of about 30 seconds, but with fast animation choise, the full face of the avatar will move and it will take about 30 minute for a record of about 30 seconds to get ready.")
     fast_animate = st.button("fast animate")
     slower_animate = st.button("slower animate")
     if save_record:
