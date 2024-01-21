@@ -51,12 +51,19 @@ In order to work with and deply the wav2lip model I had to do the following chan
 1- Changed the `_build_mel_basis()` function in `audio.py`, I had to do that in order to be able to work with `librosa>=0.10.0` pakadge, check this [issue](https://github.com/Rudrabha/Wav2Lip/issues/550) for more details.<br>
 2- Changed the `main()` function at the `inferance.py` to make it take an output from the `app.py` directly insted of using the command line arguments.<br>
 3- I took the `load_model(path)` function and added it to `app.py` and added `@st.cache_data` in order to only load the model once, insted of using it multiple times.<br>
-4- Deleted the uncessary files like the unused checkpoints.<br>
+4- Deleted the unnecessary files like the unused checkpoints.<br>
 5- Since I'm using streamlit for deployment and streamlit Cloud doesn't support GPU, I had to change the device to work with `cpu` insted of `cuda`.<br>
-6- I did other minor changes like changing path to file or modify import statements.
+6- I made other minor changes like changing the path to a file or modifying import statements.
 
 **How to run the application locally:**<br>
 
 1- clone the repo to your local machine.<br>
 2- open your terminal inside the project folder and run the following command: `pip install -r requirements.txt` to install the needed modules.<br>
 3- open your terminal inside the project folder and run the following command: `streamlit run app.py` to run the streamlit application.<br>
+
+**Video preview of the application:**<br>
+
+
+
+https://github.com/Aml-Hassan-Abd-El-hamid/AI-Lip-Sync/assets/66205928/36577ccb-5ec6-4bb4-b7ff-44bb52a4f984
+
