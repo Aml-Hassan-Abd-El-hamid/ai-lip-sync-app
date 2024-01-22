@@ -12,9 +12,11 @@ device='cpu'
 #@st.cache_data 
 @st.cache_resource
 def load_model(path):
+    st.write("Please wait for the model to be loaded or it will cause an error")
     wav2lip_checkpoints_url = "https://drive.google.com/drive/folders/1Sy5SHRmI3zgg2RJaOttNsN3iJS9VVkbg?usp=sharing"
     if not os.path.exists(path):
         gdown.download_folder(wav2lip_checkpoints_url, quiet=True, use_cookies=False)
+    st.write("Please wait")
     model = Wav2Lip()
     print("Load checkpoint from: {}".format(path))
     checkpoint = torch.load(path,map_location=lambda storage, loc: storage)
@@ -24,8 +26,9 @@ def load_model(path):
         new_s[k.replace('module.', '')] = v
     model.load_state_dict(new_s)
     model = model.to(device)
+    st.write("model is loaded!")
     return model.eval()
-model = load_model("wav2lip_checkpoints/wav2lip_gan.pth")
+
 
 image_video_map = {
       				"avatars_images/avatar1.jpg":"avatars_videos/avatar1.mp4",
@@ -64,6 +67,7 @@ def main():
     st.write("Don't forget to save the record or there will be an error!")
     save_record = st.button("save record")
     st.write("With fast animation only the lips of the avatar will move, and it will take probably less than a minute for a record of about 30 seconds, but with fast animation choise, the full face of the avatar will move and it will take about 30 minute for a record of about 30 seconds to get ready.")
+    model = load_model("wav2lip_checkpoints/wav2lip_gan.pth")
     fast_animate = st.button("fast animate")
     slower_animate = st.button("slower animate")
     if save_record:
