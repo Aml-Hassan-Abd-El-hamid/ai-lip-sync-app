@@ -158,20 +158,8 @@ def _load(checkpoint_path):
 								map_location=lambda storage, loc: storage)
 	return checkpoint
 
-def load_model(path):
-	model = Wav2Lip()
-	print("Load checkpoint from: {}".format(path))
-	checkpoint = _load(path)
-	s = checkpoint["state_dict"]
-	new_s = {}
-	for k, v in s.items():
-		new_s[k.replace('module.', '')] = v
-	model.load_state_dict(new_s)
 
-	model = model.to(device)
-	return model.eval()
-
-def main(checkpoint_path,face,audio,model):
+def main(face,audio,model):
 	if not os.path.isfile(face):
 		raise ValueError('--face argument must be a valid path to video/image file')
 
