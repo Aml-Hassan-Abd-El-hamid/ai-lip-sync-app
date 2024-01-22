@@ -74,7 +74,9 @@ def main():
         if os.path.exists('wav2lip/results/result_voice.mp4'):
              st.video('wav2lip/results/result_voice.mp4')
     if slower_animate:
-        inference.main('wav2lip/checkpoints/wav2lip_gan.pth',image_video_map[data["imge_path"]],"record.wav",model)  
+        inference.main('wav2lip/checkpoints/wav2lip_gan.pth',image_video_map[data["imge_path"]],"record.wav",model)
+        if os.path.exists('wav2lip/results/result_voice.mp4'):
+             st.video('wav2lip/results/result_voice.mp4') 
 
 if __name__ == "__main__":
     main()
