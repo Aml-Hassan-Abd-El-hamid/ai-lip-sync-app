@@ -5,24 +5,27 @@ import torch
 from streamlit_mic_recorder import mic_recorder
 from wav2lip import inference 
 from wav2lip.models import Wav2Lip
+import gdown
 
 device='cpu'
 #@st.cache_data is used to only load the model once
 #@st.cache_data 
 @st.cache_resource
 def load_model(path):
-	model = Wav2Lip()
-	print("Load checkpoint from: {}".format(path))
-	checkpoint = torch.load(path,map_location=lambda storage, loc: storage)
-	s = checkpoint["state_dict"]
-	new_s = {}
-	for k, v in s.items():
-		new_s[k.replace('module.', '')] = v
-	model.load_state_dict(new_s)
-
-	model = model.to(device)
-	return model.eval()
-model = load_model('wav2lip/checkpoints/wav2lip_gan.pth')
+    wav2lip_checkpoints_url = "https://drive.google.com/drive/folders/1Sy5SHRmI3zgg2RJaOttNsN3iJS9VVkbg?usp=sharing"
+    if not os.path.exists(path):
+        gdown.download_folder(wav2lip_checkpoints_url, quiet=True, use_cookies=False)
+    model = Wav2Lip()
+    print("Load checkpoint from: {}".format(path))
+    checkpoint = torch.load(path,map_location=lambda storage, loc: storage)
+    s = checkpoint["state_dict"]
+    new_s = {}
+    for k, v in s.items():
+        new_s[k.replace('module.', '')] = v
+    model.load_state_dict(new_s)
+    model = model.to(device)
+    return model.eval()
+model = load_model("wav2lip_checkpoints/wav2lip_gan.pth")
 
 image_video_map = {
       				"avatars_images/avatar1.jpg":"avatars_videos/avatar1.mp4",
@@ -64,17 +67,17 @@ def main():
     fast_animate = st.button("fast animate")
     slower_animate = st.button("slower animate")
     if save_record:
-         if os.path.exists('record.wav'):
+        if os.path.exists('record.wav'):
               os.remove('record.wav') 
-         with open('record.wav', mode='bx') as f:
-          f.write(data["audio"])
-         st.write("record saved!")
+        with open('record.wav', mode='bx') as f:
+             f.write(data["audio"])
+        st.write("record saved!")
     if fast_animate:
-        inference.main('wav2lip/checkpoints/wav2lip_gan.pth',data["imge_path"],"record.wav",model)
+        inference.main(data["imge_path"],"record.wav",model)
         if os.path.exists('wav2lip/results/result_voice.mp4'):
              st.video('wav2lip/results/result_voice.mp4')
     if slower_animate:
-        inference.main('wav2lip/checkpoints/wav2lip_gan.pth',image_video_map[data["imge_path"]],"record.wav",model)
+        inference.main(image_video_map[data["imge_path"]],"record.wav",model)
         if os.path.exists('wav2lip/results/result_voice.mp4'):
              st.video('wav2lip/results/result_voice.mp4') 
 
