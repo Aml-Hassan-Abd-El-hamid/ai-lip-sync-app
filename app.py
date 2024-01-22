@@ -8,7 +8,8 @@ from wav2lip.models import Wav2Lip
 
 device='cpu'
 #@st.cache_data is used to only load the model once
-@st.cache_data 
+#@st.cache_data 
+@st.cache_resource
 def load_model(path):
 	model = Wav2Lip()
 	print("Load checkpoint from: {}".format(path))
@@ -21,7 +22,6 @@ def load_model(path):
 
 	model = model.to(device)
 	return model.eval()
-
 model = load_model('wav2lip/checkpoints/wav2lip_gan.pth')
 
 image_video_map = {
