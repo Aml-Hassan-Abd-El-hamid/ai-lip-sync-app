@@ -64,8 +64,15 @@ In order to work with and deploy the wav2lip model I had to make the following c
 
 **Video preview of the application:**<br>
 
-**fast animation version**
-
+**fast animation version**<br>
+Notice how only the lips are moving.
 
 https://github.com/Aml-Hassan-Abd-El-hamid/AI-Lip-Sync/assets/66205928/36577ccb-5ec6-4bb4-b7ff-44bb52a4f984
 
+**slower animation version**<br>
+Notice how the eye and the whole face are moving instead of only the lips.
+
+
+https://github.com/Aml-Hassan-Abd-El-hamid/AI-Lip-Sync/assets/66205928/26740856-52e5-4fe7-868d-3b9341e97064
+
+The only difference between the fast and slow versions of animation here is the fact that the fast version pass only a photo while the slow version pass a video insted.
