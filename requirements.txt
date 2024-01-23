@@ -2,7 +2,7 @@ numpy==1.26.3
 scipy==1.12.0
 iou==0.1.0
 librosa==0.10.1
-opencv_python==4.9.0.80
+opencv_contrib_python==4.9.0.80
 streamlit >= 1.9.2 
 streamlit_image_select==0.6.0
 streamlit_mic_recorder==0.0.4
