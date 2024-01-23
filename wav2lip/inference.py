@@ -1,13 +1,12 @@
-from os import listdir, path
 import numpy as np
-import scipy, cv2, os, sys, argparse
-import json, subprocess, random, string
+import cv2 
+import os 
+import argparse
+import subprocess
 from tqdm import tqdm
-from glob import glob
 from .audio import load_wav, melspectrogram
 from .face_detection import FaceAlignment,LandmarksType
 import torch
-from .models import Wav2Lip
 import platform
 
 parser = argparse.ArgumentParser(description='Inference code to lip-sync videos in the wild using Wav2Lip models')
