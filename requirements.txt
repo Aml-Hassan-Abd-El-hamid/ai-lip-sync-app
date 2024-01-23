@@ -10,4 +10,3 @@ streamlit_mic_recorder==0.0.4
 torch==2.1.2
 tqdm==4.64.1
 gdown
-lws
