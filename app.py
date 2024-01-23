@@ -28,6 +28,12 @@ def load_model(path):
     model = model.to(device)
     st.write("model is loaded!")
     return model.eval()
+@st.cache_resource
+def load_avatar_videos_for_slow_animation(path):
+    avatar_videos_url = "https://drive.google.com/drive/folders/1h9pkU5wenrS2vmKqXBfFmrg-1hYw5s4q?usp=sharing"
+    if not os.path.exists(path):
+        gdown.download_folder(avatar_videos_url, quiet=True, use_cookies=False)
+    
 
 
 image_video_map = {
@@ -81,6 +87,7 @@ def main():
         if os.path.exists('wav2lip/results/result_voice.mp4'):
              st.video('wav2lip/results/result_voice.mp4')
     if slower_animate:
+        load_avatar_videos_for_slow_animation("avatars_videos")
         inference.main(image_video_map[data["imge_path"]],"record.wav",model)
         if os.path.exists('wav2lip/results/result_voice.mp4'):
              st.video('wav2lip/results/result_voice.mp4') 
