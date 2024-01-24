@@ -73,9 +73,9 @@ def main():
     st.write("Don't forget to save the record or there will be an error!")
     save_record = st.button("save record")
     st.write("With fast animation only the lips of the avatar will move, and it will take probably less than a minute for a record of about 30 seconds, but with fast animation choise, the full face of the avatar will move and it will take about 30 minute for a record of about 30 seconds to get ready.")
-    st.write("If you wish to try the slow animation, please run the application offline, clone the repo and follow the instruction from here: https://github.com/Aml-Hassan-Abd-El-hamid/ai-lip-sync-app")
     model = load_model("wav2lip_checkpoints/wav2lip_gan.pth")
     fast_animate = st.button("fast animate")
+    slower_animate = st.button("slower animate")
     if save_record:
         if os.path.exists('record.wav'):
               os.remove('record.wav') 
@@ -86,5 +86,11 @@ def main():
         inference.main(data["imge_path"],"record.wav",model)
         if os.path.exists('wav2lip/results/result_voice.mp4'):
              st.video('wav2lip/results/result_voice.mp4')
+    if slower_animate:
+        load_avatar_videos_for_slow_animation("avatars_videos")
+        inference.main(image_video_map[data["imge_path"]],"record.wav",model)
+        if os.path.exists('wav2lip/results/result_voice.mp4'):
+             st.video('wav2lip/results/result_voice.mp4') 
+
 if __name__ == "__main__":
     main()
