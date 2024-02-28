@@ -30,20 +30,13 @@ After submitting the task on time, I took more time to deploy the project on Str
 
 Given the provided hint from the company, "You can refer to state-of-the-art models in lip-syncing.", I started looking into the available open-source pre-trained model that can accomplish this task and most available resources pointed towards **Wav2Lip**. I found a couple of interesting tutorials for that model that I will share below.
 
-**Pushing the checkpoints files:**<br>
+### How to run the application locally:<br>
 
-Given the size of those kind of files, There are 2 ways to handle that. 
+1- clone the repo to your local machine.<br>
+2- open your terminal inside the project folder and run the following command: `pip install -r requirements.txt` and then run this command `sudo xargs -a packages.txt apt-get install` to install the needed modules and packages.<br>
+3- open your terminal inside the project folder and run the following command: `streamlit run app.py` to run the streamlit application.<br>
 
-At the start, I had to use git lfs, here's how to do it:<br>
-
-1- Follow the installation instructions that are suitable for your system from [here](https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage) <br>
-2- Use the command `git lfs track "*.pth"` to let git lfs know that those are your big files.<br>
-3- When pushing from the command line -I usually use VS code but it usually doesn't work with big files like `.pth` files- you need to generate a personal access token, to do so, follow the instructions from [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token), and then copy the token<br>
-4- When pushing the file from the terminal you will be asked to pass a password, don't pass your GitHub profile password, instead pass your personal access token that you got from step 3.
-
-But then Streamlit wasn't capable of even pulling the repo! so I uploaded the model checkpoints and some other files to Google Drive, put them in a public folder, and then used a module called gdown to download those folders when needed! here’s a [link](https://github.com/wkentaro/gdown) to that gdown, it’s straightforward to use and install.
-
-**Things I changed in the wav2lip and why:**<br>
+### Things I changed in the wav2lip and why:<br>
 
 In order to work with and deploy the wav2lip model I had to make the following changes:<br>
 1- Changed the `_build_mel_basis()` function in `audio.py`, I had to do that to be able to work with `librosa>=0.10.0` package, check this [issue](https://github.com/Rudrabha/Wav2Lip/issues/550) for more details.<br>
@@ -53,7 +46,7 @@ In order to work with and deploy the wav2lip model I had to make the following c
 5- Since I'm using Streamlit for deployment and Streamlit Cloud doesn't support GPU, I had to change the device to work with `cpu` instead of `cuda`.<br>
 6- I made other minor changes like changing the path to a file or modifying import statements.
 
-**Issues I had with Streamlit, during the deployment:**
+### Issues I had with Streamlit, during the deployment:
 
 This part is a documentation for me, just in case, I need to face an issue in the future and also could be helpful for any poor soul who would have to work with Streamlit:
 
@@ -77,11 +70,19 @@ I faced that problem during importing `cv2` -`openCv`- and the solution was to i
 
 4- Streamlit can't handle heavy processing, I discovered that when I tried to deploy the `slow animation` button to process video input alongside recording to get more accurate lip-syncing, the application failed directly when I used that button -and I tried to use it twice :)-, and that kinda make sense as Streamlit doesn't have a GPU or even a high ram space -I don't have a good GPU but I have about 64GB ram which was enough to run that function locally- and to solve that issue, I initiated another branch to contain the deployment version that doesn't have the `slow animation` button and used that branch for deployment while kept the main branch containing that button.
 
-**How to run the application locally:**<br>
+**Pushing the checkpoints files:**<br>
 
-1- clone the repo to your local machine.<br>
-2- open your terminal inside the project folder and run the following command: `pip install -r requirements.txt` and then run this command `sudo xargs -a packages.txt apt-get install` to install the needed modules and packages.<br>
-3- open your terminal inside the project folder and run the following command: `streamlit run app.py` to run the streamlit application.<br>
+Given the size of those kind of files, There are 2 ways to handle that. 
+
+At the start, I had to use git lfs, here's how to do it:<br>
+
+1- Follow the installation instructions that are suitable for your system from [here](https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage) <br>
+2- Use the command `git lfs track "*.pth"` to let git lfs know that those are your big files.<br>
+3- When pushing from the command line -I usually use VS code but it usually doesn't work with big files like `.pth` files- you need to generate a personal access token, to do so, follow the instructions from [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token), and then copy the token<br>
+4- When pushing the file from the terminal you will be asked to pass a password, don't pass your GitHub profile password, instead pass your personal access token that you got from step 3.
+
+But then Streamlit wasn't capable of even pulling the repo! so I uploaded the model checkpoints and some other files to Google Drive, put them in a public folder, and then used a module called gdown to download those folders when needed! here’s a [link](https://github.com/wkentaro/gdown) to that gdown, it’s straightforward to use and install.
+
 
 **Video preview of the application:**<br>
 
