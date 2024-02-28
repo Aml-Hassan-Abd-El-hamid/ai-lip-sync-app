@@ -96,6 +96,15 @@ Notice how the eye and the whole face are moving instead of only the lips.<br>
 
 Unfortunately, Streamlit can't handle the computational power that the slower animation version requires and that's why I made it only available on the offline version, which means that you need to run the application locally to try that version.
 
+English version:
 https://github.com/Aml-Hassan-Abd-El-hamid/AI-Lip-Sync/assets/66205928/26740856-52e5-4fe7-868d-3b9341e97064
+
+Arabic version:
+
+
+
+https://github.com/Aml-Hassan-Abd-El-hamid/ai-lip-sync-app/assets/66205928/ba97daca-b30d-4179-9387-a382abbca3ba
+
+
 
 The only difference between the fast and slow versions of animation here is the fact that the fast version passes only a photo while the slow version passes a video instead.
