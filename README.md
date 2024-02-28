@@ -89,7 +89,17 @@ But then Streamlit wasn't capable of even pulling the repo! so I uploaded the mo
 **fast animation version**<br>
 Notice how only the lips are moving.
 
+English version:
+
 https://github.com/Aml-Hassan-Abd-El-hamid/AI-Lip-Sync/assets/66205928/36577ccb-5ec6-4bb4-b7ff-44bb52a4f984
+
+Arabic version:
+
+
+
+https://github.com/Aml-Hassan-Abd-El-hamid/ai-lip-sync-app/assets/66205928/4346aa6d-ea4e-400e-9124-1cce06b049df
+
+
 
 **slower animation version**<br>
 Notice how the eye and the whole face are moving instead of only the lips.<br>
@@ -97,6 +107,7 @@ Notice how the eye and the whole face are moving instead of only the lips.<br>
 Unfortunately, Streamlit can't handle the computational power that the slower animation version requires and that's why I made it only available on the offline version, which means that you need to run the application locally to try that version.
 
 English version:
+
 https://github.com/Aml-Hassan-Abd-El-hamid/AI-Lip-Sync/assets/66205928/26740856-52e5-4fe7-868d-3b9341e97064
 
 Arabic version:
