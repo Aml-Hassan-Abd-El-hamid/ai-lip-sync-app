@@ -80,7 +80,7 @@ I faced that problem during importing `cv2` -`openCv`- and the solution was to i
 **How to run the application locally:**<br>
 
 1- clone the repo to your local machine.<br>
-2- open your terminal inside the project folder and run the following command: `pip install -r requirements.txt` to install the needed modules.<br>
+2- open your terminal inside the project folder and run the following command: `pip install -r requirements.txt` and then run this command `sudo xargs -a packages.txt apt-get install` to install the needed modules and packages.<br>
 3- open your terminal inside the project folder and run the following command: `streamlit run app.py` to run the streamlit application.<br>
 
 **Video preview of the application:**<br>
